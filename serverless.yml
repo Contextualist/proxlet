@@ -1,0 +1,24 @@
+service: proxlet
+
+frameworkVersion: ">=1.28.0 <2.0.0"
+
+provider:
+  name: aws
+  role: # PUT YOUR ROLE HERE
+  runtime: go1.x
+  stage: dev
+  region: ap-northeast-1
+
+package:
+ exclude:
+   - ./**
+ include:
+   - ./bin/**
+
+functions:
+  p:
+    handler: bin/p
+    events:
+      - http:
+          path: /{any+}
+          method: ANY

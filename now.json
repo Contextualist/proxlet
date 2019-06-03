@@ -1,0 +1,12 @@
+{
+    "version": 2,
+    "name": "proxlet",
+    "alias": "proxlet.now.sh",
+    "regions": ["all"],
+    "builds": [
+        { "src": "gohttp.go", "use": "@now/go" }
+    ],
+    "routes": [
+        { "src": "/.*", "dest": "gohttp.go" }
+    ]
+}

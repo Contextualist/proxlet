@@ -1,5 +1,7 @@
 # Proxlet
 
+[![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/Contextualist/proxlet)
+
 Proxlet is a POC, naïve implemetation of serverless reverse proxy for any website.
 
 ## Supported Providers

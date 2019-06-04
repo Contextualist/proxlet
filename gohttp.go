@@ -20,14 +20,16 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		cookie, err := r.Cookie("proxlet-host")
 		if err == nil {
 			referer = cookie.Value
-		} else {
+		} else if refHeader := r.Header.Get("Referer"); refHeader != "" {
 			// Fallback to Referer header, which does not always work.
-			tmp, err := url.Parse(r.Header.Get("Referer"))
+			tmp, err := url.Parse(refHeader)
 			if checkErr(err) {
 				return
 			}
 			referer = tmp.Path[1:]
 			r.Header.Set("Referer", referer)
+		} else {
+			return
 		}
 		ru, err := url.Parse(referer)
 		if checkErr(err) {
